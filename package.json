@@ -1,9 +1,14 @@
 {
   "name": "workspace",
-  "module": "src/index.js",
+  "module": "src/http/server.ts",
   "version": "1.0.50",
   "type": "module",
-  "dev": "bun run --watch src/index.ts",
+  "scripts": {
+    "dev": "bun --watch src/http/server.ts",
+    "build": "bun build src/http/server.ts",
+    "start": "NODE_ENV=production bun src/http/server.ts",
+    "test": "bun test"
+  },
   "devDependencies": {
     "@types/bun": "^1.0.10",
     "bun-types": "latest"
