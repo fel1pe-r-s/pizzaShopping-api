@@ -1,5 +1,5 @@
 {
-  "id": "ee5e7042-a61e-4605-9278-6926f0c081ca",
+  "id": "64797354-b4c0-40dd-9606-0c66af33bba3",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -26,6 +26,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "manager_id": {
+          "name": "manager_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -42,7 +48,21 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "restaurants_manager_id_users_id_fk": {
+          "name": "restaurants_manager_id_users_id_fk",
+          "tableFrom": "restaurants",
+          "tableTo": "users",
+          "columnsFrom": [
+            "manager_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },

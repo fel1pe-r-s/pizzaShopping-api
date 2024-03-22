@@ -1,27 +1,32 @@
 {
   "name": "workspace",
-  "module": "src/http/server.ts",
+  "module": "./src/http/server.ts",
   "version": "1.0.50",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/http/server.ts",
-    "build": "bun build src/http/server.ts",
-    "start": "NODE_ENV=production bun src/http/server.ts",
+    "dev": "bun --watch ./src/http/server.ts",
+    "build": "bun build ./src/http/server.ts",
+    "start": "NODE_ENV=production bun ./src/http/server.ts",
     "test": "bun test",
-    "generate": "drizzle-kit generate:pg"
+    "generate": "drizzle-kit generate:pg",
+    "migrate": "bun ./src/db/migrate.ts",
+    "studio": "npx drizzle-kit studio"
   },
   "devDependencies": {
     "@types/bun": "^1.0.10",
     "bun-types": "latest",
-    "drizzle-kit": "^0.20.14"
+    "drizzle-kit": "^0.20.14",
+    "pg": "^8.11.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@paralleldrive/cuid2": "^2.2.2",
     "drizzle-orm": "^0.30.4",
     "elysia": "^1.0.7",
-    "postgres": "^3.4.4"
+    "postgres": "^3.4.4",
+    "zod": "^3.22.4"
   }
 }
