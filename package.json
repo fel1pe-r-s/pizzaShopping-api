@@ -10,12 +10,18 @@
     "test": "bun test",
     "generate": "drizzle-kit generate:pg",
     "migrate": "bun ./src/db/migrate.ts",
-    "studio": "npx drizzle-kit studio"
+    "studio": "npx drizzle-kit studio",
+    "seed": "bun ./src/db/seed.ts",
+    "lint": "npx eslint --fix src --ext ts"
   },
   "devDependencies": {
     "@types/bun": "^1.0.10",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "bun-types": "latest",
     "drizzle-kit": "^0.20.14",
+    "eslint": "^8.57.0",
+    "eslint-plugin-drizzle": "^0.2.3",
     "pg": "^8.11.3"
   },
   "peerDependencies": {
