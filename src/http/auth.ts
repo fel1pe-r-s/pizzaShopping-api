@@ -16,18 +16,17 @@ export const auth = new Elysia()
     })
   )
   .use(cookie())
-  .use(({ jwt, setCookie, removeCookie }) => {
+  .derive({ as: "scoped" }, ({ jwt, cookie: { auth } }) => {
     return {
       signUser: async (payload: Static<typeof jwtPayload>) => {
         const token = await jwt.sign(payload);
-        setCookie("auth", token, {
-          httpOnly: true,
-          maxAge: 60 * 60 * 24 * 7, //7 days
-          path: "/",
-        });
+        auth.value = token;
+        auth.httpOnly = true;
+        (auth.maxAge = 60 * 60 * 24 * 7), //7 days
+          (auth.path = "/");
       },
       signOut: () => {
-        removeCookie("auth");
+        auth.remove();
       },
     };
   });
