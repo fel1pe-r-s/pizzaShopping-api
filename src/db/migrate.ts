@@ -8,6 +8,6 @@ const db = drizzle(connection);
 
 await migrate(db, { migrationsFolder: "drizzle" });
 
-await connection.end();
 console.log("migrate successfully!");
-process.exit(0);
+await connection.end();
+process.exit();
