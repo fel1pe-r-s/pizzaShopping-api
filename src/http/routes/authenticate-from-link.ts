@@ -31,7 +31,7 @@ export const authenticateFromLink = new Elysia().use(auth).get(
 
     const managedRestaurant = await db.query.restaurants.findFirst({
       where(fields, { eq }) {
-        return eq(fields.manegeId, authLinkFromCode.code);
+        return eq(fields.manegeId, authLinkFromCode.userId);
       },
     });
 

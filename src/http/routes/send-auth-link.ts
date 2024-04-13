@@ -3,6 +3,8 @@ import { db } from "../../db/connection";
 import { createId } from "@paralleldrive/cuid2";
 import { env } from "../../env";
 import { authLinks } from "../../db/schema";
+import { mail } from "../../lib/mail";
+import nodemailer from "nodemailer";
 
 export const sendAuthLink = new Elysia().post(
   "/authenticate",
@@ -30,8 +32,22 @@ export const sendAuthLink = new Elysia().post(
 
       authLink.searchParams.set("code", authLinkCode);
       authLink.searchParams.set("redirect", env.AUTH_REDIRECT_URL);
-      //enviar um e-mail
       console.log(authLink.toString());
+      //enviar um e-mail
+      const info = await mail.sendMail({
+        from: {
+          name: "Pizza Shop",
+          address: "hi@pizzashop.com",
+        },
+        to: email,
+        subject: "Authenticate to Pizza Shop",
+        text: `
+        Use the following link to authenticate on pizza Shop:
+        ${authLink.toString()}
+        `,
+      });
+
+      console.log(nodemailer.getTestMessageUrl(info));
     }
   },
   {
