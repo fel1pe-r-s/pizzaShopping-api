@@ -15,6 +15,20 @@
       "when": 1711481210617,
       "tag": "0001_rich_gauntlet",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1713354998033,
+      "tag": "0002_windy_skullbuster",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1713355847252,
+      "tag": "0003_happy_ricochet",
+      "breakpoints": true
     }
   ]
 }
