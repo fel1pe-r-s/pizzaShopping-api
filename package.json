@@ -37,6 +37,7 @@
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.4",
+    "drizzle-typebox": "^0.1.1",
     "elysia": "^1.0.7",
     "nodemailer": "^6.9.13",
     "postgres": "^3.4.4",

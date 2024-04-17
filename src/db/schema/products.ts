@@ -1,5 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { restaurants, orderItems } from ".";
 import { relations } from "drizzle-orm";
 
@@ -10,7 +10,7 @@ export const products = pgTable("products", {
 
   name: text("name").notNull(),
   description: text("description"),
-  priceInCents: text("price_in_cents").notNull(),
+  priceInCents: integer("price_in_cents").notNull(),
   restaurantId: text("restaurant_id")
     .notNull()
     .references(() => restaurants.id, {

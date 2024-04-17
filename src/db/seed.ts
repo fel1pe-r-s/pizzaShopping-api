@@ -73,7 +73,7 @@ const [restaurant] = await db
     {
       name: faker.company.name(),
       description: faker.lorem.paragraph(),
-      managerId: manager.id,
+      manegeId: manager.id,
     },
   ])
   .returning();
