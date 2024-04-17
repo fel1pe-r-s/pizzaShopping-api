@@ -25,7 +25,7 @@ export const orderItems = pgTable("order_items", {
 export const orderItemsRelations = relations(orderItems, ({ one }) => {
   return {
     order: one(orders, {
-      fields: [orderItems.id],
+      fields: [orderItems.orderId],
       references: [orders.id],
       relationName: "orders_item_customer ",
     }),
