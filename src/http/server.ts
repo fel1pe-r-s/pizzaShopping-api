@@ -17,6 +17,8 @@ import { getMonthOrdersAmount } from "./routes/get-month-orders-amount";
 import { getMonthCanceledOrdersAmount } from "./routes/get-month-canceled-orders-amount";
 import { getPopularProducts } from "./routes/get-popular-product";
 import { getDailyReceiptInPeriod } from "./routes/get-daily-receipt-in-period";
+import cors from "@elysiajs/cors";
+import { updateProfile } from "./routes/update-profile";
 
 const app = new Elysia()
   .use(registerRestaurant)
@@ -37,6 +39,18 @@ const app = new Elysia()
   .use(getMonthCanceledOrdersAmount)
   .use(getPopularProducts)
   .use(getDailyReceiptInPeriod)
+  .use(updateProfile)
+  .use(
+    cors({
+      origin: () => {
+        return true;
+      },
+
+      methods: ["GET", "POST", "PATCH", "PUT"],
+      allowedHeaders: ["Content-Type", "Authorization", "XMLHttpRequest"],
+      credentials: true,
+    })
+  )
   .onError(({ error, code, set }) => {
     switch (code) {
       case "VALIDATION": {
@@ -53,7 +67,6 @@ const app = new Elysia()
       }
     }
   });
-
 app.listen(3000, () => {
   console.log(
     `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
